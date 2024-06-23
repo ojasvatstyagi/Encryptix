@@ -8,16 +8,15 @@ import java.util.Random;
 public class GuessingGameJava implements ActionListener, KeyListener {
  
     
-    //Creating objects of JFrame and JPanel
- JFrame frame;
- JPanel panel1;
- JPanel panel2;
+       //Creating objects of JFrame and JPanel
+       private JFrame frame;
+       private JPanel panel1, panel2;
  
         //Creating Constructor
- GuessingGameJava(){
+       GuessingGameJava(){
  
- //Setting properties of JFrame
- frame =new JFrame();
+       //Setting properties of JFrame
+       frame =new JFrame();
         frame.setTitle("Number Guessing Game");
         frame.getContentPane().setLayout(null);
         
@@ -35,8 +34,7 @@ public class GuessingGameJava implements ActionListener, KeyListener {
         //Adding panels to JFrame
         frame.add(panel1);
         frame.add(panel2);
-        
-        
+ 
         //Setting properties of JFrame
         frame.getContentPane().setBackground(Color.white);
         frame.setSize(700,500);
@@ -44,9 +42,7 @@ public class GuessingGameJava implements ActionListener, KeyListener {
         frame.setResizable(false);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
- 
- } 
+        } 
  
     @Override
     public void keyPressed(KeyEvent e) {
