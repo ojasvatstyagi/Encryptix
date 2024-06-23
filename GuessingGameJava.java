@@ -36,8 +36,8 @@ public class GuessingGameJava implements ActionListener, KeyListener {
        GuessingGameJava(){
 
        //Managing look and feel of JOptionPane
-       UI.put("OptionPane.background",new Color(1,16,247));
-       UI.put("Panel.background", new Color(1,16,247));
+       UI.put("OptionPane.background",new Color(73, 88, 103));
+       UI.put("Panel.background", new Color(73, 88, 103));
        
        UI.put("OptionPane.messageForeground", Color.white);
        UI.put("OptionPane.messageFont",new Font("Comic Sans MS",Font.BOLD,13));
@@ -233,12 +233,10 @@ public class GuessingGameJava implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
     
-    
     }
     
     @Override
     public void keyReleased(KeyEvent e) {
-    
     
     }
     
@@ -323,7 +321,7 @@ public class GuessingGameJava implements ActionListener, KeyListener {
               randomNumber=random.nextInt(100)+1;    
               }
        }
-       
+        
  //Code for displaying Timer
         public void countDownTimer(){
 
