@@ -33,6 +33,7 @@ public class GuessingGameJava implements ActionListener, KeyListener {
        JButton guessButton, giveUpButton, newGameButton;
  
        //Creating Constructor
+       @SuppressWarnings("static-access")
        GuessingGameJava(){
 
        //Managing look and feel of JOptionPane
@@ -343,6 +344,7 @@ public class GuessingGameJava implements ActionListener, KeyListener {
  public static void main(String[] args) {
  
        //Creating object of the class
+       @SuppressWarnings("unused")
        GuessingGameJava guessingGameJava = new GuessingGameJava();
        
        }
