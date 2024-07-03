@@ -349,8 +349,8 @@ public class GuessingGameJava implements ActionListener, KeyListener {
        }
    }
 
-   //Restricting JTextField Character limits using PlainDocument class
-class JTextFieldCharLimit extends PlainDocument
+       //Restricting JTextField Character limits using PlainDocument class
+       class JTextFieldCharLimit extends PlainDocument
        {
               int limit;
               public JTextFieldCharLimit(int limitation){

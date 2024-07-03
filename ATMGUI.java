@@ -3,41 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class BankAccount {
-    private String owner;
-    private double balance;
-
-    public BankAccount(String owner, double initialBalance) {
-        this.owner = owner;
-        this.balance = initialBalance;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void deposit(double amount) {
-        if (amount > 0) {
-            balance += amount;
-        }
-    }
-
-    public boolean withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
-            return true;
-        }
-        return false;
-    }
-}
 
 public class ATMGUI implements ActionListener {
 
@@ -50,11 +15,12 @@ public class ATMGUI implements ActionListener {
 
     private BankAccount account;
     private JLabel balanceLabel;
-    private JTextField amountField;
     JButton checkBalanceButton, depositButton, withdrawButton, exitButton;
-    private JLabel imageLabel, textLabel1;
+    private JLabel imageLabel, textLabel1, textLabel2;
 
-    public ATMGUI(BankAccount account) {
+
+    @SuppressWarnings("static-access")
+    ATMGUI(BankAccount account) {
         this.account = account;
 
         // Managing look and feel of JOptionPane
@@ -76,10 +42,16 @@ public class ATMGUI implements ActionListener {
 
         // Setting properties of the components
         textLabel1 = new JLabel();
-        textLabel1.setText("Number");
+        textLabel1.setText("ATM");
         textLabel1.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
         textLabel1.setForeground(Color.WHITE);
-        textLabel1.setBounds(78, 20, 300, 100);
+        textLabel1.setBounds(100, 20, 300, 100);
+
+        textLabel2 =new JLabel();
+        textLabel2.setText("Welcome " + account.getOwner());
+        textLabel2.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        textLabel2.setForeground(new Color(193, 140, 93));
+        textLabel2.setBounds(390,20,300,100);
 
         balanceLabel = new JLabel("Balance: $" + String.format("%.2f", account.getBalance()));
         balanceLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
@@ -124,6 +96,8 @@ public class ATMGUI implements ActionListener {
         // Adding components to the container
         panel1.add(textLabel1);
         panel1.add(imageLabel);
+        panel1.add(imageLabel);
+        frame.add(textLabel2);
         frame.add(panel1);
         frame.add(balanceLabel);
         frame.add(checkBalanceButton);
@@ -139,6 +113,7 @@ public class ATMGUI implements ActionListener {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+    
         checkBalanceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -168,13 +143,14 @@ public class ATMGUI implements ActionListener {
             }
         });
     }
-
+    
     private void checkBalance() {
-        balanceLabel.setText("Balance: $" + String.format("%.2f", account.getBalance()));
+        JOptionPane.showMessageDialog(null, String.format(" Your balance is: $%.2f", account.getBalance()));
     }
 
     private void deposit() {
-        String amountStr = JOptionPane.showInputDialog(this, "Enter amount to deposit:");
+        JOptionPane.showMessageDialog(null, "Enter amount to deposit after clicking Ok:");
+        String amountStr = JOptionPane.showInputDialog(this);
         if (amountStr != null && !amountStr.isEmpty()) {
             try {
                 double amount = Double.parseDouble(amountStr);
@@ -188,7 +164,8 @@ public class ATMGUI implements ActionListener {
     }
 
     private void withdraw() {
-        String amountStr = JOptionPane.showInputDialog(this, "Enter amount to withdraw:");
+        JOptionPane.showMessageDialog(null, "Enter amount to withdraw after clicking Ok:");
+        String amountStr = JOptionPane.showInputDialog(this);
         if (amountStr != null && !amountStr.isEmpty()) {
             try {
                 double amount = Double.parseDouble(amountStr);
@@ -204,13 +181,49 @@ public class ATMGUI implements ActionListener {
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+    }
+
     public static void main(String[] args) {
         BankAccount userAccount = new BankAccount("Ojas Tyagi", 500);
         new ATMGUI(userAccount);
     }
+}
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+class BankAccount {
+    private String owner;
+    private double balance;
+
+    public BankAccount(String owner, double initialBalance) {
+        this.owner = owner;
+        this.balance = initialBalance;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+
+    public boolean withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            return true;
+        }
+        return false;
     }
 }
