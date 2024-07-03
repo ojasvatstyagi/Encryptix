@@ -59,8 +59,7 @@ public class GuessingGameJava implements ActionListener, KeyListener {
        panel2.setBackground(new Color(231, 173, 153));
        panel2.setBounds(351,370,350,100);
 
-        //Setting properties of the components
- 
+       //Setting properties of the components
        textLabel1 =new JLabel();
        textLabel1.setText("Number");
        textLabel1.setFont(new Font("Comic Sans MS", Font.BOLD, 50));
